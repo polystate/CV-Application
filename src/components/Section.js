@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import FormInput from "./FormInput";
+import uniqid from "uniqid";
 
 class Section extends Component {
   constructor(props) {
@@ -7,17 +8,22 @@ class Section extends Component {
   }
 
   render() {
-    const { sectionHeader } = this.props;
+    const { sectionHeader, allSections } = this.props;
     return (
       <section>
         <h2>{sectionHeader}</h2>
-        <FormInput
-          labelName="first"
-          placeholder="first name"
-          inputType="text"
-        />
-        <FormInput labelName="last" placeholder="last name" inputType="text" />
-        <FormInput labelName="e-mail" placeholder="e-mail" inputType="email" />
+        {Object.values(allSections)
+          .slice(1)
+          .map((inputArr) => {
+            return (
+              <FormInput
+                key={uniqid()}
+                labelName={inputArr[0]}
+                placeholder={inputArr[1]}
+                inputType={inputArr[2]}
+              />
+            );
+          })}
       </section>
     );
   }
