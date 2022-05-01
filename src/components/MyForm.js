@@ -6,23 +6,33 @@ import SubmitForm from "./SubmitForm";
 class MyForm extends Component {
   constructor(props) {
     super(props);
+
+    // this.submitHandler = this.submitHandler.bind(this);
+    this.handleCallback = this.handleCallback.bind(this);
   }
 
+  handleCallback = (childData) => {
+    this.props.callback(childData);
+  };
+
   render() {
-    const { allSections } = this.props;
+    const { allSections, callback } = this.props;
 
     return (
-      <form>
+      <form onSubmit={this.submitHandler}>
         {Object.values(allSections).map((section) => {
           return (
             <Section
               key={uniqid()}
               sectionHeader={section.header}
               allSections={section}
+              callback={this.handleCallback}
             />
           );
         })}
-        <SubmitForm allData={Object.values(allSections)} />
+        <SubmitForm />
+        {/* <input type="submit" value="Submit" /> */}
+        {/* <SubmitForm allData="some random data" /> */}
       </form>
     );
   }

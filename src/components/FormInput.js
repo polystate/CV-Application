@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import uniqid from "uniqid";
+import ResumeSect from "./ResumeSect";
 
 class FormInput extends Component {
   constructor(props) {
@@ -16,20 +16,26 @@ class FormInput extends Component {
     this.setState({
       value: e.target.value,
     });
+    this.props.callback({
+      sectionName: "",
+      labelName: this.props.labelName,
+      value: this.state.value,
+    });
   }
 
   render() {
-    const { labelName, placeholder, inputType } = this.props;
+    const { labelName, placeholder, inputType, callback } = this.props;
 
     return (
       <li style={{ listStyle: "none" }}>
         <label htmlFor={labelName}>{labelName}</label>
         <input
-          onChange={this.inputHandler}
           type={inputType}
           id={labelName}
           name={labelName}
           placeholder={placeholder}
+          onChange={this.inputHandler}
+          value={this.state.value}
           required
         />
       </li>
