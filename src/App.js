@@ -1,55 +1,68 @@
 import "./styles/App.css";
 import MyForm from "./components/MyForm";
 import Resume from "./components/Resume";
-import React, { Component } from "react";
+import React, { Component, useId } from "react";
 
-class App extends Component {
-  constructor(props) {
-    super(props);
+function App() {
+  const [state, setState] = React.useState({
+    first: "",
+    last: "",
+    email: "",
+    phone: "",
+    school: "",
+    title: "",
+    datefrom: "",
+    dateto: "",
+    company: "",
+    position: "",
+    maintasks: "",
+    datefrom2: "",
+    dateto2: "",
+  });
 
-    this.state = {
-      value: "",
-    };
-    this.handleCallback = this.handleCallback.bind(this);
-  }
-
-  handleCallback = (childData) => {
-    console.log(childData);
+  const inputHandler = (e) => {
+    const value = e.target.value;
+    setState({
+      ...state,
+      [e.target.name]: value,
+    });
   };
 
-  render() {
-    const allSections = {
-      generalInfo: {
-        header: "General Information",
-        firstName: ["first", "first name", "text"],
-        lastName: ["last", "last name", "text"],
-        eMail: ["e-mail", "e-mail", "text"],
-        phoneNumber: ["phone", "phone", "text"],
-      },
-      eduExperience: {
-        header: "Educational Experience",
-        schoolName: ["school", "school name", "text"],
-        titleStudy: ["title", "title name", "text"],
-        dateFrom: ["date from", "date from", "date"],
-        dateTo: ["date to", "date to", "date"],
-      },
-      practExperience: {
-        header: "Practical Experience",
-        companyName: ["company", "company name", "text"],
-        position: ["position", "position name", "text"],
-        mainTasks: ["main tasks", "main tasks", "text"],
-        dateFrom: ["date from", "date from", "date"],
-        dateTo: ["date to", "date to", "date"],
-      },
-    };
+  const allSections = {
+    generalInfo: {
+      header: "General Information",
+      firstName: ["first", "first name", "text", useId()],
+      lastName: ["last", "last name", "text", useId()],
+      eMail: ["email", "e-mail", "text", useId()],
+      phoneNumber: ["phone", "phone", "text", useId()],
+    },
+    eduExperience: {
+      header: "Educational Experience",
+      schoolName: ["school", "school name", "text", useId()],
+      titleStudy: ["title", "title name", "text", useId()],
+      dateFrom: ["datefrom", "date from", "date", useId()],
+      dateTo: ["dateto", "date to", "date", useId()],
+    },
+    practExperience: {
+      header: "Practical Experience",
+      companyName: ["company", "company name", "text", useId()],
+      position: ["position", "position name", "text", useId()],
+      mainTasks: ["maintasks", "main tasks", "text", useId()],
+      dateFrom: ["datefrom2", "date from", "date", useId()],
+      dateTo: ["dateto2", "date to", "date", useId()],
+    },
+  };
 
-    return (
-      <div className="App">
-        <MyForm allSections={allSections} callback={this.handleCallback} />
-        <Resume />
-      </div>
-    );
-  }
+  return (
+    <div className="App">
+      <MyForm
+        allSections={allSections}
+        inputState={state}
+        inputHandler={inputHandler}
+      />
+      <Resume />
+    </div>
+  );
 }
 
 export default App;

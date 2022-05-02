@@ -1,41 +1,26 @@
-import React, { Component } from "react";
+import React, { Component, useId } from "react";
 import Section from "./Section";
-import uniqid from "uniqid";
 import SubmitForm from "./SubmitForm";
 
-class MyForm extends Component {
-  constructor(props) {
-    super(props);
-
-    // this.submitHandler = this.submitHandler.bind(this);
-    this.handleCallback = this.handleCallback.bind(this);
-  }
-
-  handleCallback = (childData) => {
-    this.props.callback(childData);
-  };
-
-  render() {
-    const { allSections, callback } = this.props;
-
-    return (
-      <form onSubmit={this.submitHandler}>
-        {Object.values(allSections).map((section) => {
-          return (
-            <Section
-              key={uniqid()}
-              sectionHeader={section.header}
-              allSections={section}
-              callback={this.handleCallback}
-            />
-          );
-        })}
-        <SubmitForm />
-        {/* <input type="submit" value="Submit" /> */}
-        {/* <SubmitForm allData="some random data" /> */}
-      </form>
-    );
-  }
+function MyForm(props) {
+  const { allSections, inputState, inputHandler } = props;
+  const sectionIDs = [useId(), useId(), useId()];
+  return (
+    <form>
+      {Object.values(allSections).map((section, index) => {
+        return (
+          <Section
+            key={sectionIDs[index]}
+            sectionHeader={section.header}
+            allSections={section}
+            inputState={inputState}
+            inputHandler={inputHandler}
+          />
+        );
+      })}
+      {/* <SubmitForm /> */}
+    </form>
+  );
 }
 
 export default MyForm;
