@@ -1,19 +1,13 @@
-import React, { Component } from "react";
+import React from "react";
 
-class ResumeSect extends Component {
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    const { resumeHeader, resumeContent } = this.props;
-    return (
-      <div className="resume-sect">
-        <h2>{resumeHeader}</h2>
-        <p>{resumeContent}</p>
-      </div>
-    );
-  }
+function ResumeSect(props) {
+  const { header, content } = props;
+  return (
+    <div className="resume-section">
+      <h2 className="resume-subheader">{header}</h2>
+      <p className="user-input">{content}</p>
+    </div>
+  );
 }
 
 export default ResumeSect;

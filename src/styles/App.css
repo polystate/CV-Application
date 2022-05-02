@@ -1,3 +1,5 @@
+/*  #ecfdf5 #d1fae5 #a7f3d0 #6ee7b7 #34d399 #10b981 #059669 #047857 #065f46 #064e3b  */
+
 .App {
   display: flex;
   justify-content: center;
@@ -8,8 +10,26 @@
   border: 1px solid black;
   padding: 2rem;
   margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-#resume-header {
+form {
+}
+
+#resume-title {
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+.resume-subheader {
+}
+
+.resume-section {
+}
+
+.user-input {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }

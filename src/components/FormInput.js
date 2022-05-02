@@ -1,11 +1,11 @@
-import React, { Component } from "react";
-import ResumeSect from "./ResumeSect";
+import React from "react";
 
 function FormInput(props) {
   const { labelName, placeholder, inputType, inputHandler, inputState } = props;
+  let onPageLabel = labelName.replaceAll("_", " ");
   return (
     <li style={{ listStyle: "none" }}>
-      <label htmlFor={labelName}>{labelName}</label>
+      <label htmlFor={labelName}>{onPageLabel}</label>
       <input
         type={inputType}
         id={labelName}

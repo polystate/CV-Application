@@ -1,16 +1,7 @@
 import React, { Component } from "react";
-import FormInput from "./FormInput";
-import Section from "./Section";
 
-export class SubmitForm extends Component {
-  constructor(props) {
-    super(props);
-
-    this.submitHandler = this.submitHandler.bind(this);
-  }
-
-  submitHandler = (e) => {
-    // e.preventDefault();
+function SubmitForm(props) {
+  const submitHandler = (e) => {
     let allInputs = Array.from(document.querySelectorAll("input"));
     let inputValues = [];
     for (let i = 0; i < allInputs.length - 1; i++) {
@@ -19,10 +10,8 @@ export class SubmitForm extends Component {
     console.log(inputValues);
   };
 
-  render() {
-    const { allData } = this.props;
-    return <input type="submit" value="Submit" onClick={this.submitHandler} />;
-  }
+  const { allData } = props;
+  return <input type="submit" value="Submit" onClick={submitHandler} />;
 }
 
 export default SubmitForm;

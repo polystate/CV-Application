@@ -1,23 +1,23 @@
 import "./styles/App.css";
 import MyForm from "./components/MyForm";
 import Resume from "./components/Resume";
-import React, { Component, useId } from "react";
+import React, { useState, useId } from "react";
 
 function App() {
-  const [state, setState] = React.useState({
-    first: "",
-    last: "",
-    email: "",
-    phone: "",
-    school: "",
-    title: "",
-    datefrom: "",
-    dateto: "",
-    company: "",
-    position: "",
-    maintasks: "",
-    datefrom2: "",
-    dateto2: "",
+  const [state, setState] = useState({
+    First: "",
+    Last: "",
+    Email: "",
+    Phone: "",
+    School: "",
+    Title: "",
+    Attended_From: "",
+    End_Date: "",
+    Company: "",
+    Position: "",
+    Main_Tasks: "",
+    Start_Job: "",
+    End_Job: "",
   });
 
   const inputHandler = (e) => {
@@ -31,25 +31,25 @@ function App() {
   const allSections = {
     generalInfo: {
       header: "General Information",
-      firstName: ["first", "first name", "text", useId()],
-      lastName: ["last", "last name", "text", useId()],
-      eMail: ["email", "e-mail", "text", useId()],
-      phoneNumber: ["phone", "phone", "text", useId()],
+      firstName: ["First", "first name", "text", useId()],
+      lastName: ["Last", "last name", "text", useId()],
+      eMail: ["Email", "e-mail", "text", useId()],
+      phoneNumber: ["Phone", "phone", "text", useId()],
     },
     eduExperience: {
       header: "Educational Experience",
-      schoolName: ["school", "school name", "text", useId()],
-      titleStudy: ["title", "title name", "text", useId()],
-      dateFrom: ["datefrom", "date from", "date", useId()],
-      dateTo: ["dateto", "date to", "date", useId()],
+      schoolName: ["School", "school name", "text", useId()],
+      titleStudy: ["Title", "title name", "text", useId()],
+      dateFrom: ["Attended_From", "date from", "date", useId()],
+      dateTo: ["End_Date", "date to", "date", useId()],
     },
     practExperience: {
       header: "Practical Experience",
-      companyName: ["company", "company name", "text", useId()],
-      position: ["position", "position name", "text", useId()],
-      mainTasks: ["maintasks", "main tasks", "text", useId()],
-      dateFrom: ["datefrom2", "date from", "date", useId()],
-      dateTo: ["dateto2", "date to", "date", useId()],
+      companyName: ["Company", "company name", "text", useId()],
+      position: ["Position", "position name", "text", useId()],
+      mainTasks: ["Main_Tasks", "main tasks", "text", useId()],
+      dateFrom: ["Start_Job", "date from", "date", useId()],
+      dateTo: ["End_Job", "date to", "date", useId()],
     },
   };
 
@@ -60,7 +60,7 @@ function App() {
         inputState={state}
         inputHandler={inputHandler}
       />
-      <Resume />
+      <Resume appState={state} />
     </div>
   );
 }

@@ -1,6 +1,7 @@
-import React, { Component, useId } from "react";
+import React, { useId } from "react";
 import Section from "./Section";
 import SubmitForm from "./SubmitForm";
+import EditForm from "./EditForm";
 
 function MyForm(props) {
   const { allSections, inputState, inputHandler } = props;
@@ -18,18 +19,10 @@ function MyForm(props) {
           />
         );
       })}
-      {/* <SubmitForm /> */}
+      <SubmitForm />
+      <EditForm />
     </form>
   );
 }
 
 export default MyForm;
-
-/* <Section
-          sectionHeader={allSections.generalInfo.header}
-          allSections={allSections.generalInfo}
-        />
-        <Section
-          sectionHeader={allSections.eduExperience.header}
-          allSections={allSections.eduExperience}
-        /> */

@@ -1,7 +1,5 @@
-import React, { Component } from "react";
+import React from "react";
 import FormInput from "./FormInput";
-import uniqid from "uniqid";
-import SubmitForm from "./SubmitForm";
 
 function Section(props) {
   const { sectionHeader, allSections, inputState, inputHandler } = props;
