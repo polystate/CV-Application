@@ -4,8 +4,9 @@ import SubmitForm from "./SubmitForm";
 import EditForm from "./EditForm";
 
 function MyForm(props) {
-  const { allSections, inputState, inputHandler } = props;
+  const { allSections, inputState, inputHandler, activeInputs } = props;
   const sectionIDs = [useId(), useId(), useId()];
+
   return (
     <form>
       {Object.values(allSections).map((section, index) => {
@@ -16,6 +17,7 @@ function MyForm(props) {
             allSections={section}
             inputState={inputState}
             inputHandler={inputHandler}
+            activeInputs={activeInputs}
           />
         );
       })}

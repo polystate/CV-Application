@@ -5,7 +5,9 @@ function Resume(props) {
   const { appState } = props;
   return (
     <div id="resume">
-      <h2 id="resume-title">My Resume</h2>
+      <div id="resume-header">
+        <h2 id="resume-title">My Resume</h2>
+      </div>
       {Object.entries(appState).map((inputArr, index) => {
         if (inputArr[1]) {
           return (

@@ -1,11 +1,37 @@
-import React from "react";
+import React, { useState } from "react";
 import FormInput from "./FormInput";
 
 function Section(props) {
-  const { sectionHeader, allSections, inputState, inputHandler } = props;
+  const { sectionHeader, allSections, inputState, inputHandler, activeInputs } =
+    props;
+  const [sectionState, updateSection] = useState({
+    General_Information: false,
+    Educational_Experience: false,
+    Practical_Experience: false,
+  });
+
+  // const isSectionComplete = () => {
+  //   console.log(activeInputs);
+  //   console.log(allSections);
+  // };
+
+  const defaultStyle = {
+    border: "1px dashed lightgrey",
+    padding: "2rem",
+    color: "green",
+  };
+
   return (
-    <section>
-      <h2>{sectionHeader}</h2>
+    <section className="form-sect" style={defaultStyle}>
+      <h2
+        style={{
+          fontFamily: "fantasy, sans-serif",
+          letterSpacing: "2px",
+          fontWeight: 500,
+        }}
+      >
+        {sectionHeader}
+      </h2>
       {Object.values(allSections)
         .slice(1)
         .map((inputArr) => {
@@ -17,6 +43,7 @@ function Section(props) {
               inputType={inputArr[2]}
               inputHandler={inputHandler}
               inputState={inputState[inputArr[0]]}
+              activeInputs={activeInputs}
             />
           );
         })}

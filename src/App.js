@@ -4,7 +4,7 @@ import Resume from "./components/Resume";
 import React, { useState, useId } from "react";
 
 function App() {
-  const [state, setState] = useState({
+  const [inputState, updateInput] = useState({
     First: "",
     Last: "",
     Email: "",
@@ -22,8 +22,8 @@ function App() {
 
   const inputHandler = (e) => {
     const value = e.target.value;
-    setState({
-      ...state,
+    updateInput({
+      ...inputState,
       [e.target.name]: value,
     });
   };
@@ -53,14 +53,19 @@ function App() {
     },
   };
 
+  let activeInputs = Object.entries(inputState).filter((input) => {
+    return input[1] || "";
+  });
+
   return (
     <div className="App">
       <MyForm
         allSections={allSections}
-        inputState={state}
+        inputState={inputState}
         inputHandler={inputHandler}
+        activeInputs={activeInputs}
       />
-      <Resume appState={state} />
+      <Resume appState={inputState} />
     </div>
   );
 }

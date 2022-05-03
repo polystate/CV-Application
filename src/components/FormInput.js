@@ -1,12 +1,36 @@
-import React from "react";
+import React, { useState } from "react";
 
 function FormInput(props) {
-  const { labelName, placeholder, inputType, inputHandler, inputState } = props;
+  const {
+    labelName,
+    placeholder,
+    inputType,
+    inputHandler,
+    inputState,
+    activeInputs,
+  } = props;
   let onPageLabel = labelName.replaceAll("_", " ");
+  const [labelStyle, setLabelStyle] = useState({
+    textDecoration: "none",
+  });
+  const lineThrough = (e) => {
+    if (e.target.value) {
+      setLabelStyle({
+        fontWeight: "bold",
+      });
+    } else
+      setLabelStyle({
+        fontWeight: "normal",
+      });
+  };
+
   return (
     <li style={{ listStyle: "none" }}>
-      <label htmlFor={labelName}>{onPageLabel}</label>
+      <label style={labelStyle} htmlFor={labelName}>
+        {onPageLabel}:
+      </label>
       <input
+        onInput={lineThrough}
         type={inputType}
         id={labelName}
         name={labelName}
