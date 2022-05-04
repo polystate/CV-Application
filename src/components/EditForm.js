@@ -1,11 +1,24 @@
 import React from "react";
 
-/*this code will not execute until after form is submitted */
+function EditForm({ sectionState, updateSection, sectionHandler }) {
+  const buttonHandler = (e) => {
+    let sectionElems = Array.from(e.currentTarget.parentElement.childNodes);
+    let elemLIs = sectionElems.filter((section) => section.tagName === "LI");
 
-function EditForm(props) {
+    updateSection({
+      border: "1px dashed lightgrey",
+      padding: "2rem",
+      color: "green",
+      textDecoration: "none",
+      isCompleted: false,
+    });
+  };
+
   return (
     <>
-      <button>Edit</button>
+      <button onClick={buttonHandler} type="button">
+        Edit
+      </button>
     </>
   );
 }

@@ -22,7 +22,6 @@ function MyForm(props) {
         );
       })}
       <SubmitForm />
-      <EditForm />
     </form>
   );
 }

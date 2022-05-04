@@ -59,6 +59,17 @@ function App() {
 
   return (
     <div className="App">
+      <h1 style={{ marginBottom: "0" }}>cv generator</h1>
+      <a
+        href="#resume-title"
+        style={{
+          fontSize: "1.5rem",
+          marginBottom: "2rem",
+          textDecoration: "none",
+        }}
+      >
+        jump to resume
+      </a>
       <MyForm
         allSections={allSections}
         inputState={inputState}

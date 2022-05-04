@@ -1,5 +1,9 @@
 /*  #ecfdf5 #d1fae5 #a7f3d0 #6ee7b7 #34d399 #10b981 #059669 #047857 #065f46 #064e3b  */
 
+:root {
+  --main-width: 50rem;
+}
+
 .App {
   display: flex;
   flex-direction: column;
@@ -10,19 +14,36 @@
 
 form {
   border: 1px solid darkgrey;
-  /* width: 25rem; */
+  width: var(--main-width);
 }
+
+.form-header {
+  background-color: black;
+  margin: 0;
+  height: 5rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* .form-sect {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+} */
 
 #resume {
   border: 1px solid black;
-  padding: 2rem;
+  /* padding: 2rem; */
   margin-top: 2rem;
   display: flex;
   flex-direction: column;
   justify-content: start;
   align-items: center;
   height: 500px;
-  width: 500px;
+  width: var(--main-width);
 }
 
 #resume-title {
@@ -50,7 +71,7 @@ input {
   outline: none;
   height: 2rem;
   border: 1px solid lightgrey;
-  /* width: 100%; */
+  width: 100%;
 }
 
 input:focus {

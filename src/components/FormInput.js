@@ -13,7 +13,7 @@ function FormInput(props) {
   const [labelStyle, setLabelStyle] = useState({
     textDecoration: "none",
   });
-  const lineThrough = (e) => {
+  const labelHandler = (e) => {
     if (e.target.value) {
       setLabelStyle({
         fontWeight: "bold",
@@ -30,7 +30,7 @@ function FormInput(props) {
         {onPageLabel}:
       </label>
       <input
-        onInput={lineThrough}
+        onInput={labelHandler}
         type={inputType}
         id={labelName}
         name={labelName}
